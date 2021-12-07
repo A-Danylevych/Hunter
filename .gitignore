@@ -1,3 +1,11 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+.idea/
+.vs/
+/_ReSharper.Caches/
+
 # Common IntelliJ Platform excludes
 
 # User specific
