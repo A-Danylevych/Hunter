@@ -23,11 +23,24 @@ public class PlayerController : MonoBehaviour
         moveInput = inputValue.Get<Vector2>();
     }
 
+    void OnFire(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            Fire();
+        }
+    }
+
     void Go()
     {
         float steerAmount =  moveInput.x * steerSpeed * Time.deltaTime;
         float moveAmount = moveInput.y * moveSpeed * Time.deltaTime;
         transform.Rotate(0,0,-steerAmount);
         transform.Translate(moveAmount,0, 0);
+    }
+
+    void Fire()
+    {
+        
     }
 }
