@@ -8,23 +8,28 @@ public class Flash : MonoBehaviour
 {
     [SerializeField] private float flashSpeed = 20f;
     [SerializeField] private float lifeTime = 1f;
-    private Rigidbody2D _bulletRigidbody2D;
+    private Rigidbody2D _flashRigidbody2D;
     private PlayerController _player;
     private Vector3 _vector;
+
+    void Awake()
+    {
+        _flashRigidbody2D = GetComponent<Rigidbody2D>();
+        _player = FindObjectOfType<PlayerController>();
+    }
+
     void Start()
     {
-        _bulletRigidbody2D = GetComponent<Rigidbody2D>();
-        _player = FindObjectOfType<PlayerController>();
         _vector= _player.transform.right;
+        StartCoroutine(nameof(SelfDestroying));
     }
 
     void Update()
     {
-        _bulletRigidbody2D.velocity = _vector * flashSpeed;
-        StartCoroutine(nameof(SelfDestroying));
+        _flashRigidbody2D.velocity = _vector * flashSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (LayerMask.LayerToName(other.gameObject.layer) == "Animal")
         {
@@ -33,13 +38,13 @@ public class Flash : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator SelfDestroying()
+    IEnumerator SelfDestroying()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         Destroy(gameObject);
     }
