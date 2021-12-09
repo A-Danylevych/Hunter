@@ -46,7 +46,7 @@ using UnityEngine;
                 return;
             }
         
-            transform.position += velocity * Time.deltaTime;
+            transform.position = velocity * Time.deltaTime;
             acceleration = Vector2.zero;
             transform.rotation = Quaternion.LookRotation(velocity);
         }
@@ -63,15 +63,6 @@ using UnityEngine;
                 ApplyForce(steeringForce);   
             }
 
-    }    
-}
-
-internal class DesiredVelocityProvider
-{
-    public Vector3 GetDesiredVelocity()
-    {
-        throw new System.NotImplementedException();
     }
-
-    public int Weight { get; set; }
-}
+    
+    }

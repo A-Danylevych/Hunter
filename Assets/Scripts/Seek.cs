@@ -12,3 +12,8 @@ public class Seek : DesiredVelocityProvider
             return (objectToFollow.position - transform.position).normalized * Vehicle.VelocityLimit;
         }
     }
+
+public class Vehicle
+{
+    public static float VelocityLimit { get; set; }
+}
