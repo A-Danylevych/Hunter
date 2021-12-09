@@ -5,26 +5,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector2 moveInput;
-    private Rigidbody2D playerRigidbody;
     [SerializeField] private float steerSpeed = 1f;
     [SerializeField] private float moveSpeed = 1f;
+    private Vector2 moveInput;
+    private Rigidbody2D playerRigidbody;
+    private Collider2D playerBodyCollider;
+    private bool isAlive = true;
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        playerBodyCollider = GetComponent<Collider2D>();
     }
     void Update()
     {
+        if (!isAlive) return;
         Go();
+        Die();
     }
 
     void OnMove(InputValue inputValue)
     {
+        if (!isAlive) return;
         moveInput = inputValue.Get<Vector2>();
     }
 
     void OnFire(InputValue inputValue)
     {
+        if (!isAlive) return;
         if (inputValue.isPressed)
         {
             Fire();
@@ -41,6 +48,14 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        
+        Debug.Log("piy-piy!!");
+    }
+
+    void Die()
+    {
+        if (playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
+        {
+            isAlive = false;
+        }
     }
 }

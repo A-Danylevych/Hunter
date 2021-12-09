@@ -72,3 +72,13 @@ public class Bunny : MonoBehaviour
     }
     
 }
+
+internal class DesiredVelocityProvider
+{
+    public Vector3 GetDesiredVelocity()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public int Weight { get; set; }
+}
