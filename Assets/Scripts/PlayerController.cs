@@ -1,61 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float steerSpeed = 1f;
     [SerializeField] private float moveSpeed = 1f;
-    private Vector2 moveInput;
-    private Rigidbody2D playerRigidbody;
-    private Collider2D playerBodyCollider;
-    private bool isAlive = true;
+    [SerializeField] private GameObject flash;
+    [SerializeField] private Transform gun;
+    private Vector2 _moveInput;
+    private Rigidbody2D _playerRigidbody;
+    private BoxCollider2D _playerBodyCollider;
+    private bool _isAlive = true;
     void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();
-        playerBodyCollider = GetComponent<Collider2D>();
+        _playerRigidbody = GetComponent<Rigidbody2D>();
+        _playerBodyCollider = GetComponent<BoxCollider2D>();
+        
     }
     void Update()
     {
-        if (!isAlive) return;
+        if (!_isAlive)
+        {
+            Reload();
+            return;
+        }
         Go();
         Die();
+
     }
 
     void OnMove(InputValue inputValue)
     {
-        if (!isAlive) return;
-        moveInput = inputValue.Get<Vector2>();
+        if (!_isAlive) return;
+        _moveInput = inputValue.Get<Vector2>();
     }
 
     void OnFire(InputValue inputValue)
     {
-        if (!isAlive) return;
-        if (inputValue.isPressed)
-        {
-            Fire();
-        }
+        if (!_isAlive) return;
+        Instantiate(flash, gun.position, transform.rotation);
     }
 
-    void Go()
+    private void Go()
     {
-        float steerAmount =  moveInput.x * steerSpeed * Time.deltaTime;
-        float moveAmount = moveInput.y * moveSpeed * Time.deltaTime;
+        var steerAmount =  _moveInput.x * steerSpeed * Time.deltaTime;
+        var moveAmount = _moveInput.y * moveSpeed * Time.deltaTime;
         transform.Rotate(0,0,-steerAmount);
         transform.Translate(moveAmount,0, 0);
     }
 
-    void Fire()
+    private void Die()
     {
-        Debug.Log("piy-piy!!");
+        if (!_playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Water"))) return;
+        _isAlive = false;
     }
 
-    void Die()
+    private void Reload()
     {
-        if (playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Water")))
-        {
-            isAlive = false;
-        }
+        SceneManager.LoadScene("UI");
     }
 }

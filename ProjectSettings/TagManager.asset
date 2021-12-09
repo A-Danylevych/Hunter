@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ground
+  - Animals
+  - Flash
   - 
   - 
   - 
@@ -49,6 +49,12 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 2171695003
+    locked: 0
+  - name: Animals
+    uniqueID: 1691981175
+    locked: 0
+  - name: Flash
+    uniqueID: 2421915067
     locked: 0
   - name: Player
     uniqueID: 4002873829
