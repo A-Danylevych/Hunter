@@ -53,3 +53,6 @@ TagManager:
   - name: Player
     uniqueID: 4002873829
     locked: 0
+  - name: Animals
+    uniqueID: 707334733
+    locked: 0
