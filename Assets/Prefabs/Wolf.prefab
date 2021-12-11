@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1950073788617704614}
   - component: {fileID: -3730357668962654181}
   - component: {fileID: 3146025995203227688}
+  - component: {fileID: 1334681692672155238}
   m_Layer: 10
   m_Name: Wolf
   m_TagString: Untagged
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 60
+  eatTime: 45
 --- !u!114 &3146025995203227688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +189,16 @@ MonoBehaviour:
   circleDistance: 1
   circleRadius: 2
   angleChangeStep: 15
+--- !u!114 &1334681692672155238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615531613694123715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7dd0b3b0fa6b614e8b5117683f80f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1

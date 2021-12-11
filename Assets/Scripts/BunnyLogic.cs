@@ -22,4 +22,10 @@ public class BunnyLogic : MonoBehaviour
         _flees.Remove(flee);
         Destroy(flee);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (LayerMask.LayerToName(other.gameObject.layer) != "Water") return;
+        Destroy(gameObject);
+    }
 }

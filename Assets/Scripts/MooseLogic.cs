@@ -91,5 +91,10 @@ public class MooseLogic : MonoBehaviour
         if (LayerMask.LayerToName(other.gameObject.layer) != "Mooses") return;
         _neighbors.Remove(other.gameObject.GetComponent<Animal>());
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (LayerMask.LayerToName(other.gameObject.layer) != "Water") return;
+        Destroy(gameObject);
+    }
 }

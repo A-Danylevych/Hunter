@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3667999589849519830}
   - component: {fileID: -6517684725933137750}
   - component: {fileID: -9052312150673841576}
+  - component: {fileID: -6154027685176423187}
   m_Layer: 9
   m_Name: Bunny
   m_TagString: Untagged
@@ -186,3 +187,16 @@ MonoBehaviour:
   circleDistance: 1
   circleRadius: 2
   angleChangeStep: 15
+--- !u!114 &-6154027685176423187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583770000044543155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7dd0b3b0fa6b614e8b5117683f80f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
