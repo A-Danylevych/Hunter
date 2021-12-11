@@ -57,6 +57,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steerSpeed: 100
   moveSpeed: 2
+  flash: {fileID: 4518812329917774587, guid: f7faeaec051a46d43bdb9f7e892d3dad, type: 3}
+  gun: {fileID: 8710571842570972558}
+  filmCount: 10
 --- !u!222 &8710571842424983538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -104,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -292093467
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fa63c3a3c614b2246977971f3af29d64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

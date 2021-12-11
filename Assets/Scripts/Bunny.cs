@@ -14,6 +14,14 @@ using UnityEngine;
     private float velocityLimit = 3;
     private const float Epsilon = 0.01f;
     public float VelocityLimit => velocityLimit;
+    private Rigidbody2D _playerRigidbody;
+    private BoxCollider2D _playerBodyCollider;
+    
+    void Awake()
+    {
+        _playerRigidbody = GetComponent<Rigidbody2D>();
+        _playerBodyCollider = GetComponent<BoxCollider2D>();
+    }
     public void ApplyForce(Vector2 force)
     {
         force /= mass;
@@ -52,7 +60,7 @@ using UnityEngine;
         }
         void ApplySteeringForce()
             {
-                var provider = GetComponent<DesiredVelocityProvider>();
+                var provider = GetComponent<Seek>();
                 if (provider == null)
                 {
                     return;

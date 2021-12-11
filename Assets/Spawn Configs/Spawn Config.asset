@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3265b6d8a70589641b5cff9c119b3f02, type: 3}
+  m_Name: Spawn Config
+  m_EditorClassIdentifier: 
+  ground: {fileID: 2015442047011163971, guid: 523e1745bd291bb448e044df2dc5e0b2, type: 3}
+  rabbitMoveSpeed: 5
+  mooseMoveSpeed: 5
+  wolfMoveSpeed: 5
+  rabbitCount: 100
+  mooseGroupCount: 0
+  mooseGroupSize: 0
+  wolfCount: 0
+  rabbitPrefab: {fileID: 4583770000044543155, guid: 8932a4950b6ef364c8f8f05595e2c4b5, type: 3}
+  moosePrefab: {fileID: 0}
+  wolfPrefab: {fileID: 0}

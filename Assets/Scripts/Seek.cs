@@ -6,7 +6,12 @@ public class Seek : DesiredVelocityProvider
     {
         [SerializeField]
         private Transform objectToFollow;
-        
+
+        void Awake()
+        {
+            objectToFollow = GetComponent<PlayerController>().transform;
+        }
+
         public override Vector2 GetDesiredVelocity()
         {
             return (objectToFollow.position - transform.position).normalized * Vehicle.VelocityLimit;
@@ -15,5 +20,9 @@ public class Seek : DesiredVelocityProvider
 
 public class Vehicle
 {
-    public static float VelocityLimit { get; set; }
+    public static float VelocityLimit
+    {
+        get => 200;
+        private set => VelocityLimit = value;
+    } 
 }

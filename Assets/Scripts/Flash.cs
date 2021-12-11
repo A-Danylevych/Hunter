@@ -29,23 +29,18 @@ public class Flash : MonoBehaviour
         _flashRigidbody2D.velocity = _vector * flashSpeed;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Animal")
-        {
-            Destroy(other.gameObject);
-        }
-        Destroy(gameObject);
-    }
-
     IEnumerator SelfDestroying()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Animals")
+        {
+            Destroy(other.gameObject);
+        }
         Destroy(gameObject);
     }
 }

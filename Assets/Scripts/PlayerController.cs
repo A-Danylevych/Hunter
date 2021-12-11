@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Go();
-        Die();
+        //Die();
     }
 
     void OnMove(InputValue inputValue)
