@@ -16,10 +16,10 @@ MonoBehaviour:
   rabbitMoveSpeed: 5
   mooseMoveSpeed: 5
   wolfMoveSpeed: 5
-  rabbitCount: 0
-  mooseGroupCount: 3
-  mooseGroupSize: 20
-  wolfCount: 0
+  rabbitCount: 30
+  mooseGroupCount: 5
+  mooseGroupSize: 5
+  wolfCount: 20
   timeBetweenSpawns: 0.1
   rabbitPrefab: {fileID: 4583770000044543155, guid: 8932a4950b6ef364c8f8f05595e2c4b5, type: 3}
   moosePrefab: {fileID: 7478725635932048529, guid: 1bd5957e42a46c644a61020313c2140f, type: 3}

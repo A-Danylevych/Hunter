@@ -97493,18 +97493,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 8710571842424983541, guid: 562f6f68820543f4c9df766071be0154, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710571842424983542, guid: 562f6f68820543f4c9df766071be0154, type: 3}
-      propertyPath: m_Mass
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710571842424983542, guid: 562f6f68820543f4c9df766071be0154, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8710571842424983549, guid: 562f6f68820543f4c9df766071be0154, type: 3}
       propertyPath: m_Name
       value: Player
