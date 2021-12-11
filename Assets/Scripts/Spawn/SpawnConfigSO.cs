@@ -8,9 +8,6 @@ namespace Spawn
     public class SpawnConfigSO : ScriptableObject
     {
         [SerializeField] private BoxCollider2D ground;
-        [SerializeField] private float rabbitMoveSpeed = 5f;
-        [SerializeField] private float mooseMoveSpeed = 5f;
-        [SerializeField] private float wolfMoveSpeed = 5f;
         [SerializeField] private int rabbitCount = 5;
         [SerializeField] private int mooseGroupCount = 5;
         [SerializeField] private int mooseGroupSize = 5;
@@ -49,22 +46,7 @@ namespace Spawn
         {
             return wolfPrefab;
         }
-
-        public float GetRabbitSpeed()
-        {
-            return rabbitMoveSpeed;
-        }
         
-        public float GetMooseSpeed()
-        {
-            return mooseMoveSpeed;
-        }
-
-        public float GetWolfSpeed()
-        {
-            return wolfMoveSpeed;
-        }
-
         public Vector2 GetCenter()
         {
             return ground.offset;

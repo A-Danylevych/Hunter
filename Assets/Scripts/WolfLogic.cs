@@ -50,9 +50,9 @@ public class WolfLogic : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        var flee = _seeks.Find(x => x.objectToFollow == other.gameObject.transform);
-        _seeks.Remove(flee);
-        Destroy(flee);
+        var seek = _seeks.Find(x => x.objectToFollow == other.gameObject.transform);
+        _seeks.Remove(seek);
+        Destroy(seek);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
