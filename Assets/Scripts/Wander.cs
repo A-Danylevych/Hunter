@@ -26,9 +26,9 @@ public class Wander : DesiredVelocityProvider
             angle-= angleChangeStep;
         }
             
-        var futurePos = Bunny.transform.position + Bunny.Velocity.normalized * circleDistance;
+        var futurePos = Animal.transform.position + Animal.Velocity.normalized * circleDistance;
         var vector = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad),Mathf.Sin(angle * Mathf.Deg2Rad) * circleRadius, 0);
 
-        return (futurePos + vector - transform.position).normalized * Bunny.VelocityLimit;
+        return (futurePos + vector - transform.position).normalized * Animal.VelocityLimit;
     }
 }

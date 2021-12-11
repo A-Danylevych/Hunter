@@ -6,15 +6,20 @@ public abstract class DesiredVelocityProvider : MonoBehaviour
     {
         [SerializeField, Range(0,3)]
         private float weight = 1f;
-        
+
         public float Weight => weight;
-        
-        protected Bunny Bunny;
+
+        protected Animal Animal;
 
         private void Awake()
         {
-            Bunny = GetComponent<Bunny>();
+            Animal = GetComponent<Animal>();
         }
 
         public abstract Vector3 GetDesiredVelocity();
+
+        public void ChangeWeight(int newWeight)
+        {
+            weight = newWeight;
+        }
     }

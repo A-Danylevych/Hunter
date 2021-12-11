@@ -1,29 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Seek : DesiredVelocityProvider
 {
-    private Transform _objectToFollow;
+    public Transform objectToFollow;
 
     [SerializeField, Range(0,10)]
     private float arriveRadius;
 
-    void Start()
-    {
-        _objectToFollow = FindObjectOfType<PlayerController>().transform;
-    }
-        
     public override Vector3 GetDesiredVelocity()
     {
-        var distance = (_objectToFollow.position - transform.position);
+        var distance = (objectToFollow.position - transform.position);
         float k = 1;
         if (distance.magnitude < arriveRadius)
         {
             k = distance.magnitude / arriveRadius;
         }
 
-        return distance.normalized * Bunny.VelocityLimit * k;
+        return distance.normalized * Animal.VelocityLimit * k;
     }
 
 

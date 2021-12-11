@@ -9,14 +9,9 @@ public class AvoidEdges : DesiredVelocityProvider
         
     public override Vector3 GetDesiredVelocity()
     {
-        var maxSpeed = Bunny.VelocityLimit;
-        var v = Bunny.Velocity;
+        var maxSpeed = Animal.VelocityLimit;
+        var v = Animal.Velocity;
         
-        // if (cam == null)
-        // {
-        //     return v;
-        // }
-
         var config = GetComponent<SpawnConfigSO>();
         var point = new Vector2();
 
