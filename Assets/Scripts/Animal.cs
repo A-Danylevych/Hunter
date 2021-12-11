@@ -59,11 +59,9 @@ using UnityEngine;
             void ApplyForces()
             {
                 velocity += acceleration * Time.deltaTime;
-                //limit velocity
                 velocity = Vector3.ClampMagnitude(velocity, velocityLimit);
-
-                //on small values object might start to blink, so we considering 
-                //small velocities as zeroes
+                
+                
                 if (velocity.magnitude < Epsilon)
                 {
                     velocity = Vector3.zero;

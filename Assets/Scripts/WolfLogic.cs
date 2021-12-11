@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Behavior;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WolfLogic : MonoBehaviour
 {
-    [SerializeField] private float lifeTime = 60f;
+    [SerializeField] private float lifeTime = 120f;
+    [SerializeField] private float eatTime = 45f;
     private List<Seek> _seeks;
     private Coroutine _destroying;
 
@@ -13,11 +16,27 @@ public class WolfLogic : MonoBehaviour
     {
         _seeks = new List<Seek>();
     }
+    
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(SelfDestroying());
+        Starving();
+        Dying();
     }
+
+    private void Starving()
+    {
+        lifeTime -= Time.deltaTime;
+    }
+
+    private void Dying()
+    {
+        if (lifeTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,21 +57,15 @@ public class WolfLogic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Rabbits" || LayerMask.LayerToName(other.gameObject.layer) == "Mooses")
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Rabbits" || LayerMask.LayerToName(other.gameObject.layer) == "Mooses" || other.gameObject.tag == "Player")
         {
             Destroy(other.gameObject);
-            StopCoroutine(_destroying);
-            _destroying = StartCoroutine(SelfDestroying());
+            lifeTime += eatTime;
         }
         else if (LayerMask.LayerToName(other.gameObject.layer) == "Water")
         {
             Destroy(gameObject);
         }
     }
-
-    IEnumerator SelfDestroying()
-    {
-        yield return new WaitForSeconds(lifeTime);
-        Destroy(gameObject);
-    }
+    
 }

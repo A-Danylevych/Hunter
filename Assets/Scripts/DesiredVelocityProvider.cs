@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class DesiredVelocityProvider : MonoBehaviour
     {
-        [SerializeField, Range(0,3)]
+        [SerializeField, Range(0,10)]
         private float weight = 1f;
 
         public float Weight => weight;
