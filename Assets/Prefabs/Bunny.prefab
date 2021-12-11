@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
-  velocityLimit: 3
+  velocityLimit: 5.28
   steeringForceLimit: 5
 --- !u!58 &3667999589849519830
 CircleCollider2D:
@@ -199,5 +199,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7dd0b3b0fa6b614e8b5117683f80f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 10
   ground: {fileID: 2015442047011163971, guid: 523e1745bd291bb448e044df2dc5e0b2, type: 3}

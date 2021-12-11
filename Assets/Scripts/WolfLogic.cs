@@ -65,7 +65,7 @@ public class WolfLogic : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("Player"))
         {
-            //SceneManager.LoadScene("UI");
+            SceneManager.LoadScene("UI");
         }
         else if (LayerMask.LayerToName(other.gameObject.layer) == "Water")
         {
