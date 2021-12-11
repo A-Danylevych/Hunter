@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Flash : MonoBehaviour
 {
@@ -21,7 +18,7 @@ public class Flash : MonoBehaviour
     void Start()
     {
         _vector= _player.transform.right;
-        StartCoroutine(nameof(SelfDestroying));
+        StartCoroutine(SelfDestroying());
     }
 
     void Update()
