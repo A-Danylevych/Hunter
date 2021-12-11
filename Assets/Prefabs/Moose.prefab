@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
+  m_Mass: 10
   m_LinearDrag: 1.53
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
-  velocityLimit: 14.49
-  steeringForceLimit: 25.8
+  velocityLimit: 1.8
+  steeringForceLimit: 2.4
 --- !u!58 &7688293145115318004
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -199,5 +199,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7dd0b3b0fa6b614e8b5117683f80f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 10
   ground: {fileID: 2015442047011163971, guid: 523e1745bd291bb448e044df2dc5e0b2, type: 3}

@@ -59,7 +59,7 @@ MonoBehaviour:
   moveSpeed: 2
   flash: {fileID: 4518812329917774587, guid: f7faeaec051a46d43bdb9f7e892d3dad, type: 3}
   gun: {fileID: 8710571842570972558}
-  filmCount: 10
+  filmCount: 50
 --- !u!222 &8710571842424983538
 CanvasRenderer:
   m_ObjectHideFlags: 0
