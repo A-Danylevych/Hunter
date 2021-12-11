@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class DesiredVelocityProvider : MonoBehaviour
     {
+        [SerializeField, Range(0,3)]
+        private float weight = 1f;
+        
+        public float Weight => weight;
+        
         protected Bunny Bunny;
 
         private void Awake()
@@ -11,5 +16,5 @@ public abstract class DesiredVelocityProvider : MonoBehaviour
             Bunny = GetComponent<Bunny>();
         }
 
-        public abstract Vector2 GetDesiredVelocity();
+        public abstract Vector3 GetDesiredVelocity();
     }

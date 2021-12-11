@@ -3,74 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 
  public class Bunny : MonoBehaviour
-    {
-    private Vector2 velocity;
-    private Vector2 acceleration;
-    [SerializeField]
-    private float mass = 1;
-    
-    [SerializeField, Range(1, 20)]
-    private float steeringForceLimit = 5;
-    private float velocityLimit = 3;
-    private const float Epsilon = 0.01f;
-    public float VelocityLimit => velocityLimit;
-    private Rigidbody2D _playerRigidbody;
-    private BoxCollider2D _playerBodyCollider;
-    
-    void Awake()
-    {
-        _playerRigidbody = GetComponent<Rigidbody2D>();
-        _playerBodyCollider = GetComponent<BoxCollider2D>();
-    }
-    public void ApplyForce(Vector2 force)
-    {
-        force /= mass;
-        acceleration += force;
-    }
-    private void Update()
-    {
-        ApplyFriction();
-        
-        ApplyForces();
-        
-        ApplySteeringForce();
+ {
+        private Vector3 velocity;
 
-        void ApplyFriction()
+        private Vector3 acceleration;
+
+        [SerializeField]
+        private float mass = 1;
+
+        [SerializeField, Range(1, 20)]
+        private float velocityLimit = 3;
+
+        [SerializeField, Range(1, 50)]
+        private float steeringForceLimit = 5;           
+
+        private const float Epsilon = 0.05f;
+
+        public float VelocityLimit => velocityLimit;
+
+        public Vector3 Velocity => velocity;
+
+        public void ApplyForce(Vector3 force)
         {
-            var friction = -velocity.normalized * 0.5f;
-            ApplyForce(friction);
+            force /= mass;
+            acceleration += force;
         }
-        void ApplyForces()
+
+        private void Update()
         {
-            velocity += acceleration * Time.deltaTime;
-        
-            //limit velocity
-            velocity = Vector2.ClampMagnitude(velocity, velocityLimit);
-            //on small values object might start to blink, so we considering 
-            //small velocities as zeroes
-            if (velocity.magnitude < Epsilon)
+            ApplyFriction();
+
+            ApplySteeringForce();
+            
+            ApplyForces();
+
+            void ApplyFriction()
             {
-                velocity = Vector3.zero;
-                return;
+                var friction = -velocity.normalized * 0.5f;
+                ApplyForce(friction);
             }
-        
-            transform.position = velocity * Time.deltaTime;
-            acceleration = Vector2.zero;
-            transform.rotation = Quaternion.LookRotation(velocity);
-        }
-        void ApplySteeringForce()
+
+            void ApplySteeringForce()
             {
-                var provider = GetComponent<Seek>();
-                if (provider == null)
+                var providers = GetComponents<DesiredVelocityProvider>();
+                var steering = Vector3.zero;
+                foreach (var provider in providers)
                 {
+                    var desiredVelocity = provider.GetDesiredVelocity() * provider.Weight; //
+                    steering += desiredVelocity - velocity;
+                        
+                }
+                ApplyForce(Vector3.ClampMagnitude(steering - velocity, steeringForceLimit));
+            }
+
+            void ApplyForces()
+            {
+                velocity += acceleration * Time.deltaTime;
+                //limit velocity
+                velocity = Vector3.ClampMagnitude(velocity, velocityLimit);
+
+                //on small values object might start to blink, so we considering 
+                //small velocities as zeroes
+                if (velocity.magnitude < Epsilon)
+                {
+                    velocity = Vector3.zero;
                     return;
                 }
 
-                var desiredVelocity = provider.GetDesiredVelocity();
-                var steeringForce = Vector2.ClampMagnitude(desiredVelocity - velocity, steeringForceLimit);
-                ApplyForce(steeringForce);   
+                transform.position += velocity * Time.deltaTime;
+                acceleration = Vector3.zero;
             }
-
-    }
+        }
     
     }

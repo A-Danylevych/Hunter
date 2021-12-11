@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 839822907201796463}
   - component: {fileID: 1907828464390271789}
   - component: {fileID: 1361688102}
+  - component: {fileID: 9201141252579427151}
+  - component: {fileID: 4734748725643861693}
   m_Layer: 9
   m_Name: Bunny
   m_TagString: Untagged
@@ -106,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1361688102
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +125,33 @@ CircleCollider2D:
   m_Offset: {x: 0.002516985, y: -0.11578134}
   serializedVersion: 2
   m_Radius: 0.3166678
+--- !u!114 &9201141252579427151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583770000044543155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c3dd63a8c04c444a74c26fde8d1cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
+  velocityLimit: 3
+  steeringForceLimit: 5
+--- !u!114 &4734748725643861693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583770000044543155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fa3958b28e69c47ae7cb6523ba7833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  objectToFollow: {fileID: 8710571842424983549, guid: 562f6f68820543f4c9df766071be0154, type: 3}
+  arriveRadius: 0
