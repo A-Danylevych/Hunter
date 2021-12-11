@@ -6,31 +6,34 @@ namespace Behavior
     public class AvoidEdges : DesiredVelocityProvider
     {
         private float edge = 0.05f;
+        [SerializeField] private BoxCollider2D  ground;
         
         public override Vector3 GetDesiredVelocity()
         {
             var maxSpeed = Animal.VelocityLimit;
             var v = Animal.Velocity;
-        
-            var config = GetComponent<SpawnConfigSO>();
-            var point = new Vector2();
 
-            if (point.x > 1 - edge)
+            var center = ground.offset;
+            var size = ground.size;
+            var position = transform.position;
+            
+
+            if (center.x +position.x - size.x >1 - edge)
             {
                 return new Vector3(-maxSpeed, 0, 0);
                 
             }
-            if (point.x < edge)
+            if (center.x - position.x - size.x  < edge)
             {
                 return new Vector3(maxSpeed, 0, 0);
             }
-            if (point.y > 1 - edge)
+            if (center.y + position.y - size.y > 1 - edge)
             {
-                return new Vector3(0, 0, -maxSpeed);
+                return new Vector3(0, -maxSpeed, 0 );
             }
-            if (point.y < edge)
+            if (center.y - position.y - size.y  < edge)
             {
-                return new Vector3(0, 0, maxSpeed);
+                return new Vector3(0, maxSpeed, 0);
             }
 
             return v;
