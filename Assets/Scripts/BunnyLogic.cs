@@ -12,7 +12,7 @@ public class BunnyLogic : MonoBehaviour
     {
         var flee = gameObject.AddComponent<Flee>();
         flee.objectToFlee = other.gameObject.transform;
-        flee.ChangeWeight(2);
+        flee.ChangeWeight(10);
         _flees.Add(flee);
     }
 

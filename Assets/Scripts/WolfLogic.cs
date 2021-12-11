@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Behavior;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WolfLogic : MonoBehaviour
 {
@@ -57,10 +58,14 @@ public class WolfLogic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Rabbits" || LayerMask.LayerToName(other.gameObject.layer) == "Mooses" || other.gameObject.tag == "Player")
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Rabbits" || LayerMask.LayerToName(other.gameObject.layer) == "Mooses")
         {
             Destroy(other.gameObject);
             lifeTime += eatTime;
+        }
+        else if(other.gameObject.CompareTag("Player"))
+        {
+            //SceneManager.LoadScene("UI");
         }
         else if (LayerMask.LayerToName(other.gameObject.layer) == "Water")
         {

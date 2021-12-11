@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Flash : MonoBehaviour
@@ -8,6 +9,7 @@ public class Flash : MonoBehaviour
     private Rigidbody2D _flashRigidbody2D;
     private PlayerController _player;
     private Vector3 _vector;
+    [SerializeField] private List<string> _animalsLayers = new List<string>();
 
     void Awake()
     {
@@ -34,7 +36,7 @@ public class Flash : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Animals")
+        if (_animalsLayers.Contains(LayerMask.LayerToName(other.gameObject.layer)))
         {
             Destroy(other.gameObject);
         }

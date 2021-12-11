@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Go();
-        //Die();
     }
 
     void OnMove(InputValue inputValue)
@@ -50,13 +49,6 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0,0,-steerAmount);
         transform.Translate(moveAmount,0, 0);
     }
-
-    void Die()
-    {
-        if (!_playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Water"))) return;
-        _isAlive = false;
-    }
-
     void Reload()
     {
         SceneManager.LoadScene("UI");
