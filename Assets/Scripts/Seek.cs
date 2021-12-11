@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Seek : DesiredVelocityProvider
 {
-    [SerializeField]
     private Transform objectToFollow;
 
     [SerializeField, Range(0,10)]
@@ -12,7 +11,7 @@ public class Seek : DesiredVelocityProvider
 
     void Start()
     {
-        objectToFollow = GetComponent<>().transform;
+        objectToFollow = FindObjectOfType<PlayerController>().transform;
     }
         
     public override Vector3 GetDesiredVelocity()
