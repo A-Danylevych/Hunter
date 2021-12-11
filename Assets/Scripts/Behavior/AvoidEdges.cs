@@ -11,32 +11,31 @@ namespace Behavior
         public override Vector3 GetDesiredVelocity()
         {
             var maxSpeed = Animal.VelocityLimit;
-            var v = Animal.Velocity;
 
             var center = ground.offset;
             var size = ground.size;
             var position = transform.position;
             
 
-            if (center.x +position.x - size.x >1 - edge)
+            if (Mathf.Abs(center.x -position.x) > size.x/2 - edge)
             {
                 return new Vector3(-maxSpeed, 0, 0);
                 
             }
-            if (center.x - position.x - size.x  < edge)
+            if (Mathf.Abs(center.x -position.x) < edge)
             {
                 return new Vector3(maxSpeed, 0, 0);
             }
-            if (center.y + position.y - size.y > 1 - edge)
+            if (Mathf.Abs(center.y -position.y) > size.y/2 - edge)
             {
                 return new Vector3(0, -maxSpeed, 0 );
             }
-            if (center.y - position.y - size.y  < edge)
+            if (Mathf.Abs(center.y -position.y) < edge)
             {
                 return new Vector3(0, maxSpeed, 0);
             }
 
-            return v;
+            return Vector3.zero;
         }
     }
 }
