@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Flee : DesiredVelocityProvider
 {
-    [SerializeField]
-    private Transform objectToFlee;
+    private Transform _objectToFlee;
         
     void Start()
     {
-        objectToFlee = FindObjectOfType<PlayerController>().transform;
+        _objectToFlee = FindObjectOfType<PlayerController>().transform;
     }
     
     public override Vector3 GetDesiredVelocity()
     {
-        return -(objectToFlee.position - transform.position).normalized * Bunny.VelocityLimit;
+        return -(_objectToFlee.position - transform.position).normalized * Bunny.VelocityLimit;
     }
 }
