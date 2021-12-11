@@ -18,7 +18,7 @@ public class AvoidEdges : DesiredVelocityProvider
         // }
 
         var config = GetComponent<SpawnConfigSO>();
-        var point = 
+        var point = new Vector2();
 
         if (point.x > 1 - edge)
         {
